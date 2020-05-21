@@ -13,4 +13,7 @@ _.each(W.model.segments.getObjectArray(), (s) => {
   If (onScreen(s)) {
     const sAtts= s.getFeatureAttributes();
     const fwdDirection = s.sAtts.fwdDirection;
+    const revDirection = s.sAtts.revDirection;
+    const fwdLanes = s.sAtts.fwdLaneCount;
+    const revLanes = s.sAtts.revLaneCounty;
     
