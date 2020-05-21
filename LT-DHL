@@ -8,7 +8,9 @@
 // @author       jm6087 (with lots of help from SkiDooGuy)
 // @grant        none
 
-// some sort of code to do something next
-// See NOTES
-
-                
+function checkOppositeLanes() {
+_.each(W.model.segments.getObjectArray(), (s) => {
+  If (onScreen(s)) {
+    const sAtts= s.getFeatureAttributes();
+    const fwdDirection = s.sAtts.fwdDirection;
+    
