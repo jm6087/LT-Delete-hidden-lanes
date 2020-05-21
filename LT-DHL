@@ -17,3 +17,24 @@ _.each(W.model.segments.getObjectArray(), (s) => {
     const fwdLanes = s.sAtts.fwdLaneCount;
     const revLanes = s.sAtts.revLaneCounty;
     
+    If (fwdLanes > 0 && fwdDirection = false) {
+      highlight segemnt
+   OR
+    If (revLanes > 0 && revDirection = false) {
+    highlight segemnt
+   
+   
+function checkSelectedSegment () {
+  const selObj = W.selectionManager.getSelectedFeatures();
+  const selSeg = selObjs[0].model.attributes;
+  const segFwdLanes = selSeg.fwdLaneCount;
+  const segRevLanes = selSeg.revLaneCount;
+  const segFwdDir = selSeg.fwdDirection;
+  const segRevDir = selSeg.revDireciton;
+  
+  If (segFwdLanes > 0 && segFwdDir = False) {
+    add button to allow deleting of lanes
+  OR
+  If (segRevLanes > 0 && segRevDir = False) {
+    add button to allow deleting of lanes  
+  
