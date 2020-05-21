@@ -8,12 +8,14 @@ If there are lanes on the inbound node, provide a button to allow editor to dele
 
 Checking to see if one-way
 
-If W.selectionManager.getSelectedFeatures()[0].model.attributes.revDirection = False
+If 
+W.selectionManager.getSelectedFeatures()[0].model.attributes.revDirection = False
 and 
 W.selectionManager.getSelectedFeatures()[0].model.attributes.revLaneCount > 0
 
 or 
-If W.selectionManager.getSelectedFeatures()[0].model.attributes.fwdDirection = False
+If 
+W.selectionManager.getSelectedFeatures()[0].model.attributes.fwdDirection = False
 and 
 W.selectionManager.getSelectedFeatures()[0].model.attributes.fwdLaneCount > 0
 
