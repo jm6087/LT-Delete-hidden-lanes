@@ -21,6 +21,6 @@ W.selectionManager.getSelectedFeatures()[0].model.attributes.fwdLaneCount > 0
 
 then
 
-Figure out how to change the LaneCount to 0
+Don't know how to change the LaneCount to 0
 
 
