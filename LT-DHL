@@ -29,7 +29,7 @@ _.each(W.model.segments.getObjectArray(), (s) => {
 }
 
    
-function deleteLanes () {
+function deleteLanes(dir) {
   const selObj = W.selectionManager.getSelectedFeatures();
   const selSeg = selObjs[0].model.attributes;
   const segFwdLanes = selSeg.fwdLaneCount;
