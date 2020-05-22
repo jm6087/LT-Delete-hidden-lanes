@@ -29,7 +29,7 @@ _.each(W.model.segments.getObjectArray(), (s) => {
 }
 
    
-function checkSelectedSegment () {
+function deleteLanes () {
   const selObj = W.selectionManager.getSelectedFeatures();
   const selSeg = selObjs[0].model.attributes;
   const segFwdLanes = selSeg.fwdLaneCount;
@@ -37,9 +37,24 @@ function checkSelectedSegment () {
   const segFwdDir = selSeg.fwdDirection;
   const segRevDir = selSeg.revDireciton;
   
-  If (segFwdLanes > 0 && segFwdDir = False) {
-    add button to allow deleting of lanes
-  OR
-  If (segRevLanes > 0 && segRevDir = False) {
-    add button to allow deleting of lanes  
+      const mAction = new MultiAction();
+    
+    // These next three variables are empty and are just being set up for later use
+    let node;
+    let conSegs
+    // I do want to mention that this object declaration is important, as it's how we'll group and pass our desired
+    // changes to WME
+    let updates = {};
+
+    // Don't worry about this for now, I again barely understand it. Just accept it's needed. :)
+    mAction.setModel(W.model);
+    
+    
+    
+  
+ // If (segFwdLanes > 0 && segFwdDir = False) {
+ //   add button to allow deleting of lanes
+ // OR
+ // If (segRevLanes > 0 && segRevDir = False) {
+ //   add button to allow deleting of lanes  
   
