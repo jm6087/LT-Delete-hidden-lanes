@@ -19,10 +19,15 @@ _.each(W.model.segments.getObjectArray(), (s) => {
     
     If (fwdLanes > 0 && fwdDirection = false) {
       highlight segemnt
+   			}
    OR
     If (revLanes > 0 && revDirection = false) {
     highlight segemnt
-   
+			}
+		}
+	}
+}
+
    
 function checkSelectedSegment () {
   const selObj = W.selectionManager.getSelectedFeatures();
