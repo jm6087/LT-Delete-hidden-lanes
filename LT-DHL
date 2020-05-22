@@ -37,7 +37,11 @@ function deleteLanes () {
   const segFwdDir = selSeg.fwdDirection;
   const segRevDir = selSeg.revDireciton;
   
-      const mAction = new MultiAction();
+  //	Do we need to look at the "turn graph"?  I ask because if there are lanes on a segment then LaneCount will be > 0
+      // Then we grab the entire turn graph, this is where information about turns between segments is stored
+    const turnGraph = W.model.getTurnGraph();
+  
+    const mAction = new MultiAction();
     
     // These next three variables are empty and are just being set up for later use
     let node;
