@@ -8,57 +8,58 @@
 // @author       jm6087 (with lots of help from SkiDooGuy)
 // @grant        none
 
-function checkOppositeLanes() {
-_.each(W.model.segments.getObjectArray(), (s) => {
-  If (onScreen(s)) {
-    const sAtts= s.getFeatureAttributes();
-    const fwdDirection = s.sAtts.fwdDirection;
-    const revDirection = s.sAtts.revDirection;
-    const fwdLanes = s.sAtts.fwdLaneCount;
-    const revLanes = s.sAtts.revLaneCounty;
-    
-    If (fwdLanes > 0 && fwdDirection = false) {
-      highlight segemnt
-   			}
-   OR
-    If (revLanes > 0 && revDirection = false) {
-    highlight segemnt
-			}
-		}
-	}
-}
-
    
 function deleteLanes(dir) {
   const selObj = W.selectionManager.getSelectedFeatures();
-  const selSeg = selObjs[0].model.attributes;
+  const selSeg = selObjs[0].model;
   const segFwdLanes = selSeg.fwdLaneCount;
   const segRevLanes = selSeg.revLaneCount;
   const segFwdDir = selSeg.fwdDirection;
   const segRevDir = selSeg.revDireciton;
   
-  //	Do we need to look at the "turn graph"?  I ask because if there are lanes on a segment then LaneCount will be > 0
-      // Then we grab the entire turn graph, this is where information about turns between segments is stored
+//	Do we need to look at the "turn graph"?  I ask because if there are lanes on a segment then LaneCount will be > 0
+// Then we grab the entire turn graph, this is where information about turns between segments is stored
     const turnGraph = W.model.getTurnGraph();
-  
+// This is a "require" which calls a module within WME
     const mAction = new MultiAction();
     
-    // These next three variables are empty and are just being set up for later use
+// These next three variables are empty and are just being set up for later use
     let node;
     let conSegs
-    // I do want to mention that this object declaration is important, as it's how we'll group and pass our desired
-    // changes to WME
+// I do want to mention that this object declaration is important, as it's how we'll group and pass our desired
+// changes to WME
     let updates = {};
 
-    // Don't worry about this for now, I again barely understand it. Just accept it's needed. :)
+// Don't worry about this for now, I again barely understand it. Just accept it's needed. :)
     mAction.setModel(W.model);
     
+    If (dir === 'fwd');{
     
+// here we are saving into our updates object the fact that we want the fwd lane count to be 0
+        updates.fwdLaneCount = 0;
+
+// Next we grab the B node by using the getObjectById function in the nodes model and plugging in the toNodeID which
+// is an attribute in the segment 
+        node = W.model.nodes.getObjectById(selSeg.attributes.toNodeID);
     
-  
- // If (segFwdLanes > 0 && segFwdDir = False) {
- //   add button to allow deleting of lanes
- // OR
- // If (segRevLanes > 0 && segRevDir = False) {
- //   add button to allow deleting of lanes  
-  
+// This will get all the segment ids attached to the node we stored in the "node" variable above
+        conSegs = node.getSegmentIds();
+ 
+ // These next two lines will change the actual displayed value of lanes in the lanes tab of the segment        
+        $('.fwd-lanes').find('.form-control').val(0);
+        $('.fwd-lanes').find('.form-control').change();
+    }
+ 
+// Same as above, but for the reverse B->A direction
+    if (dir === 'rev') {
+        updates.revLaneCount = 0;
+        node = W.model.nodes.getObjectById(selSeg.attributes.fromNodeID);
+        conSegs = node.getSegmentIds();
+        $('.rev-lanes').find('.form-control').val(0);
+        $('.rev-lanes').find('.form-control').change();
+    }
+    
+     // Now we take the action from wither the fwd or rev function above and store it as a subaction in our multiaction that we
+    // will pass to the actionManager for saving once finished
+    mAction.doSubAction(new UpdateObj(selSeg, updates));   
+    
