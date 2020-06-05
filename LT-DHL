@@ -5,8 +5,9 @@
 // @description  Deletes hidden lanes on one-way segments so you don't have to convert lanes to two-way first
 // @include      /^https:\/\/(www|beta)\.waze\.com\/(?!user\/)(.{2,6}\/)?editor\/?.*$/
 // @exclude      https://www.waze.com/user/editor*
-// @author       jm6087 (with lots of help from SkiDooGuy)
+// @author       jm6087 (with lots of help from SkiDooGuy - THANKS)
 // @grant        none
+// ==/UserScript==
 
    
 function deleteLanes(dir) {
