@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WME Lane Tools - Delete Hidden Lanes
 // @namespace    https://github.com/jm6087/
-// @version      2020.06.04.00
+// @version      2020.06.04.01
 // @description  Deletes hidden lanes on one-way segments so you don't have to convert lanes to two-way first
 // @include      /^https:\/\/(www|beta)\.waze\.com\/(?!user\/)(.{2,6}\/)?editor\/?.*$/
 // @exclude      https://www.waze.com/user/editor*
