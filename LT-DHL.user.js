@@ -99,4 +99,4 @@ function deleteLanes(dir) {
     // to the multication to display to editors what happened
     mAction._description = 'Tried to do what SkiDoo said to do';
     W.model.actionManager.add(mAction);
-}
+};
