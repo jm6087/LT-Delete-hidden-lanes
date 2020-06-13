@@ -9,8 +9,14 @@
 // @grant        none
 // ==/UserScript==
 
-   
-function deleteLanes(dir) {
+(function(){
+       'use strict';
+    var UPDATE_NOTES = `Hopefully deletes hidden lanes <br><br>
+    var VERSION = GM_info.script.version;
+    var SCRIPT_NAME = GM_info.script.name;
+
+function deleteLanes(dir) {   
+
   const selObj = W.selectionManager.getSelectedFeatures();
   const selSeg = selObjs[0].model;
   const segFwdLanes = selSeg.fwdLaneCount;
@@ -100,3 +106,13 @@ function deleteLanes(dir) {
     mAction._description = 'Tried to do what SkiDoo said to do';
     W.model.actionManager.add(mAction);
 };
+    function bootstrap(tries = 1) {
+        if (W && W.map && W.model && W.loginManager.user && $ && WazeWrap.Ready ) {
+            deletelanes()
+            WazeWrap.Interface.ShowScriptUpdate(SCRIPT_NAME, VERSION, UPDATE_NOTES);
+            console.log(SCRIPT_NAME, "loaded");
+        } else if (tries < 1000)
+            setTimeout(function () {bootstrap(++tries);}, 200);
+    }
+    bootstrap();
+})();
